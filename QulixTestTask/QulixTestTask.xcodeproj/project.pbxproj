@@ -16,6 +16,7 @@
 		05F6666E2B8CB2B500E0D838 /* QulixTestTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6666D2B8CB2B500E0D838 /* QulixTestTaskUITestsLaunchTests.swift */; };
 		05F6667B2B8CB87100E0D838 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6667A2B8CB87100E0D838 /* MyTableViewController.swift */; };
 		05F6667D2B8CC01400E0D838 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */; };
+		05F666872B8CEE7A00E0D838 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F666862B8CEE7A00E0D838 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		05F6666D2B8CB2B500E0D838 /* QulixTestTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QulixTestTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		05F6667A2B8CB87100E0D838 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		05F666862B8CEE7A00E0D838 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		05F666492B8CB2AE00E0D838 /* QulixTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				05F666852B8CEE6C00E0D838 /* Services */,
 				05F6667E2B8CC56100E0D838 /* SceneDelegate */,
 				05F6667F2B8CC57C00E0D838 /* ViewControllers */,
 				05F666532B8CB2B400E0D838 /* Assets.xcassets */,
@@ -157,6 +160,14 @@
 				05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */,
 			);
 			path = MyTableViewCell;
+			sourceTree = "<group>";
+		};
+		05F666852B8CEE6C00E0D838 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				05F666862B8CEE7A00E0D838 /* NetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F666872B8CEE7A00E0D838 /* NetworkService.swift in Sources */,
 				05F6664B2B8CB2AE00E0D838 /* AppDelegate.swift in Sources */,
 				05F6667D2B8CC01400E0D838 /* MyTableViewCell.swift in Sources */,
 				05F6664D2B8CB2AE00E0D838 /* SceneDelegate.swift in Sources */,
