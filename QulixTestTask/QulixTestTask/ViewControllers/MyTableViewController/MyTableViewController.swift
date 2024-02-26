@@ -14,8 +14,11 @@ class MyTableViewController: UITableViewController {
     // MARK: - Properties
     private let cellIdentifier = "MyTableViewCell"
     private let rowHeight = UIScreen.main.bounds.height / 15
-    private let sectionCount = 1
-    private let rowsCount = 10
+    private var sectionTitles: [String]?
+    private var sectionCount: Int?
+    private var rowsCount: [Int]?
+    
+    private var weatherData: WeatherDataModel?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -24,7 +27,7 @@ class MyTableViewController: UITableViewController {
         setupTableView()
         getWeatherData()
         
-        navigationItem.title = "Погода в Минске"
+        navigationItem.title = "Погода в Минске" // bad practice
         
     }
     
@@ -33,8 +36,12 @@ class MyTableViewController: UITableViewController {
         networkService.fetchData { result in
             switch result {
             case .success(let data):
-                guard let data = try? JSONDecoder().decode(WeatherDataModel.self, from: data) else { return }
-                print("Data count: \(data.list.count)")
+                DispatchQueue.main.async {
+                    guard let data = try? JSONDecoder().decode(WeatherDataModel.self, from: data) else { return }
+                    self.weatherData = data
+                    self.setSections(data: data)
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -47,6 +54,13 @@ class MyTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
+    
+    //setup sections title, sections count and rows count in each section
+    private func setSections(data: WeatherDataModel) {
+        self.sectionTitles = String.getSectionTitle(data: data)
+        self.sectionCount = Int.getSectionCount(data: data)
+        self.rowsCount = Int.getRowsCountInSection(data: data)
+    }
 
 }
 
@@ -54,11 +68,11 @@ class MyTableViewController: UITableViewController {
 extension MyTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        sectionCount
+        sectionCount ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rowsCount
+        rowsCount?[section] ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,6 +87,10 @@ extension MyTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         rowHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        sectionTitles?[section] ?? ""
     }
     
 }
