@@ -33,9 +33,17 @@ class MyTableViewCell: UITableViewCell {
     }
 
     // MARK: - Fill cell with data
-    func fillCellWithData(data: Date) {
-        timeLabel.text = "123"
-        temperatureLabel.text = "12312"
+    func fillCellWithData(data: WeatherDataModel, indexPath: IndexPath, rowCount: [Int]) {
+        
+        let index = getIndex(indexPath: indexPath, rowsCount: rowCount)
+
+        let dateString = data.list[index].dtTxt
+        let hoursString = getHoursFromDate(date: dateString)
+        timeLabel.text = "Time: " + hoursString
+        
+        let temperature = data.list[index].main.temp
+        let temperatureString = convertToCelsiusString(value: temperature)
+        temperatureLabel.text = "Temperature: " + temperatureString
     }
     
     // MARK: - Cell view setting
@@ -63,7 +71,7 @@ extension MyTableViewCell {
         timeLabel.textAlignment = .left
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            timeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            timeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             timeLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
             timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             timeLabel.topAnchor.constraint(equalTo: self.topAnchor)
@@ -85,4 +93,46 @@ extension MyTableViewCell {
         ])
     }
 
+}
+
+// MARK: - Calculation
+private extension MyTableViewCell {
+    
+    // in fillCellWithData()
+    func getHoursFromDate(date: String) -> String {
+        let startIndex = date.index(date.startIndex, offsetBy: 11)
+        let endIndex = date.index(date.startIndex, offsetBy: 16)
+        let timeString = date[startIndex..<endIndex]
+        return String(timeString)
+    }
+    
+    // in fillCellWithData()
+    func convertToCelsiusString(value: Double) -> String {
+        let components = String(value).components(separatedBy: ".")
+        if let integerPart = components.first {
+            return integerPart + "°C"
+        } else { return "" }
+    }
+    
+    // Calculation weatherData index for cell in fillCellWithData()
+    func getIndex(indexPath: IndexPath, rowsCount: [Int]) -> Int {
+        
+        var index: Int = 0
+        
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if section == 0 {
+            index = row
+        } else {
+            for i in rowsCount[0...section-1] {
+                index += i
+            }
+            index += row
+        }
+    
+        return index
+        
+    }
+    
 }
