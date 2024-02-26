@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		05F6664B2B8CB2AE00E0D838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6664A2B8CB2AE00E0D838 /* AppDelegate.swift */; };
 		05F6664D2B8CB2AE00E0D838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6664C2B8CB2AE00E0D838 /* SceneDelegate.swift */; };
-		05F6664F2B8CB2AE00E0D838 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6664E2B8CB2AE00E0D838 /* ViewController.swift */; };
 		05F666542B8CB2B400E0D838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05F666532B8CB2B400E0D838 /* Assets.xcassets */; };
 		05F666572B8CB2B400E0D838 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05F666552B8CB2B400E0D838 /* LaunchScreen.storyboard */; };
 		05F666622B8CB2B500E0D838 /* QulixTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F666612B8CB2B500E0D838 /* QulixTestTaskTests.swift */; };
 		05F6666C2B8CB2B500E0D838 /* QulixTestTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6666B2B8CB2B500E0D838 /* QulixTestTaskUITests.swift */; };
 		05F6666E2B8CB2B500E0D838 /* QulixTestTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6666D2B8CB2B500E0D838 /* QulixTestTaskUITestsLaunchTests.swift */; };
+		05F6667B2B8CB87100E0D838 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6667A2B8CB87100E0D838 /* MyTableViewController.swift */; };
+		05F6667D2B8CC01400E0D838 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 		05F666472B8CB2AE00E0D838 /* QulixTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QulixTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F6664A2B8CB2AE00E0D838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05F6664C2B8CB2AE00E0D838 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		05F6664E2B8CB2AE00E0D838 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		05F666532B8CB2B400E0D838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05F666562B8CB2B400E0D838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05F666582B8CB2B400E0D838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		05F666672B8CB2B500E0D838 /* QulixTestTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QulixTestTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F6666B2B8CB2B500E0D838 /* QulixTestTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QulixTestTaskUITests.swift; sourceTree = "<group>"; };
 		05F6666D2B8CB2B500E0D838 /* QulixTestTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QulixTestTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		05F6667A2B8CB87100E0D838 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
+		05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,8 @@
 		05F666492B8CB2AE00E0D838 /* QulixTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				05F6664A2B8CB2AE00E0D838 /* AppDelegate.swift */,
-				05F6664C2B8CB2AE00E0D838 /* SceneDelegate.swift */,
-				05F6664E2B8CB2AE00E0D838 /* ViewController.swift */,
+				05F6667E2B8CC56100E0D838 /* SceneDelegate */,
+				05F6667F2B8CC57C00E0D838 /* ViewControllers */,
 				05F666532B8CB2B400E0D838 /* Assets.xcassets */,
 				05F666552B8CB2B400E0D838 /* LaunchScreen.storyboard */,
 				05F666582B8CB2B400E0D838 /* Info.plist */,
@@ -122,6 +123,40 @@
 				05F6666D2B8CB2B500E0D838 /* QulixTestTaskUITestsLaunchTests.swift */,
 			);
 			path = QulixTestTaskUITests;
+			sourceTree = "<group>";
+		};
+		05F6667E2B8CC56100E0D838 /* SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				05F6664A2B8CB2AE00E0D838 /* AppDelegate.swift */,
+				05F6664C2B8CB2AE00E0D838 /* SceneDelegate.swift */,
+			);
+			path = SceneDelegate;
+			sourceTree = "<group>";
+		};
+		05F6667F2B8CC57C00E0D838 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				05F666802B8CC59200E0D838 /* MyTableViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		05F666802B8CC59200E0D838 /* MyTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				05F6667A2B8CB87100E0D838 /* MyTableViewController.swift */,
+				05F666812B8CC5A900E0D838 /* MyTableViewCell */,
+			);
+			path = MyTableViewController;
+			sourceTree = "<group>";
+		};
+		05F666812B8CC5A900E0D838 /* MyTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */,
+			);
+			path = MyTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F6664F2B8CB2AE00E0D838 /* ViewController.swift in Sources */,
 				05F6664B2B8CB2AE00E0D838 /* AppDelegate.swift in Sources */,
+				05F6667D2B8CC01400E0D838 /* MyTableViewCell.swift in Sources */,
 				05F6664D2B8CB2AE00E0D838 /* SceneDelegate.swift in Sources */,
+				05F6667B2B8CB87100E0D838 /* MyTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
