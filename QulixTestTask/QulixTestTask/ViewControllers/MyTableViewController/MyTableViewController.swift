@@ -50,6 +50,7 @@ class MyTableViewController: UITableViewController {
     
     // MARK: - TableView setting
     private func setupTableView() {
+        tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -67,28 +68,35 @@ class MyTableViewController: UITableViewController {
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension MyTableViewController {
     
+    // number of section
     override func numberOfSections(in tableView: UITableView) -> Int {
         sectionCount ?? 0
     }
     
+    // number of rows in section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         rowsCount?[section] ?? 0
     }
     
+    // cell for row
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MyTableViewCell else { return UITableViewCell() }
         
-        cell.fillCellWithData(data: Date())
+        guard let weatherData = weatherData, let rowsCount = rowsCount else { return UITableViewCell() }
+        
+        cell.fillCellWithData(data: weatherData, indexPath: indexPath, rowCount: rowsCount)
 
         return cell
         
     }
     
+    // height for row
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         rowHeight
     }
     
+    // title for header
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         sectionTitles?[section] ?? ""
     }

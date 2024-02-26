@@ -18,18 +18,18 @@ extension Int {
         return daysList.count
     }
     
-    // MARK: - get array withrows in section (index = section, value = rows count)
+    // MARK: - get array with rows in section (index = section, value = rows count)
     static func getRowsCountInSection(data: WeatherDataModel) -> [Int] {
         var datesArray: [String] = []
         for dayDate in data.list {
             datesArray.append(String(dayDate.dtTxt.prefix(10)))
         }
-        let rowsCount = countOccurrences(datesArray)
+        let rowsCount = countOccurrences(dates: datesArray)
         return rowsCount
     }
     
     // in getRowsCountInSection
-    static func countOccurrences(_ dates: [String]) -> [Int] {
+    static func countOccurrences(dates: [String]) -> [Int] {
         
         var counts: [Int] = []
         var previousDate = dates[0]
@@ -41,7 +41,7 @@ extension Int {
             } else {
                 counts.append(currentCount)
                 previousDate = date
-                currentCount = 0
+                currentCount = 1
             }
         }
         counts.append(currentCount)
