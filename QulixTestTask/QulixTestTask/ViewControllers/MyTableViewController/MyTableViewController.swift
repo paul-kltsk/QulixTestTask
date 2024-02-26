@@ -13,6 +13,8 @@ class MyTableViewController: UITableViewController {
     // MARK: - Properties
     private let cellIdentifier = "MyTableViewCell"
     private let rowHeight = UIScreen.main.bounds.height / 15
+    private let sectionCount = 1
+    private let rowsCount = 10
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,8 +38,12 @@ class MyTableViewController: UITableViewController {
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension MyTableViewController {
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        sectionCount
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        40
+        rowsCount
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +51,7 @@ extension MyTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MyTableViewCell else { return UITableViewCell() }
         
         cell.fillCellWithData(data: Date())
-        print(cell.dateLabel.frame)
+
         return cell
         
     }

@@ -9,8 +9,12 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    private var textSize: CGFloat?
+    
     // MARK: - View
-    let dateLabel = UILabel()
+    private let timeLabel = UILabel()
+    private let temperatureLabel = UILabel()
 
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -24,30 +28,60 @@ class MyTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
+    override func layoutSubviews() {
+        updateFontSize()
+    }
+
     // MARK: - Fill cell with data
     func fillCellWithData(data: Date) {
-        dateLabel.text = "123"
+        timeLabel.text = "123"
+        temperatureLabel.text = "12312"
     }
     
     // MARK: - Cell view setting
     private func setupCellView() {
         setupDateLabel()
+        setupTemperatureLabel()
     }
     
+    // MARK: - font size
+    private func updateFontSize() {
+        let textSize = contentView.bounds.height * (1.0 / 3.0)
+        timeLabel.font = UIFont.systemFont(ofSize: textSize)
+        temperatureLabel.font = UIFont.systemFont(ofSize: textSize)
+    }
     
+}
+
+// MARK: - Views
+extension MyTableViewCell {
+    // dateLabel
     private func setupDateLabel() {
-        addSubview(dateLabel)
-        dateLabel.text = "123"
-        dateLabel.font = UIFont.systemFont(ofSize: 15)
-        dateLabel.textColor = .black
-        dateLabel.textAlignment = .center
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(timeLabel)
+        timeLabel.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        timeLabel.textColor = .black
+        timeLabel.textAlignment = .left
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -200),
-            dateLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            dateLabel.topAnchor.constraint(equalTo: self.topAnchor)
+            timeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            timeLabel.trailingAnchor.constraint(equalTo: self.centerXAnchor),
+            timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            timeLabel.topAnchor.constraint(equalTo: self.topAnchor)
+        ])
+    }
+    
+    // temperatureLabel
+    private func setupTemperatureLabel() {
+        addSubview(temperatureLabel)
+        temperatureLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium)
+        temperatureLabel.textColor = .black
+        temperatureLabel.textAlignment = .center
+        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            temperatureLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor),
+            temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            temperatureLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            temperatureLabel.topAnchor.constraint(equalTo: self.topAnchor)
         ])
     }
 
