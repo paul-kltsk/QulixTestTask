@@ -9,6 +9,7 @@ import UIKit
 
 class MyTableViewController: UITableViewController {
     
+    private let networkService = NetworkService.shared
 
     // MARK: - Properties
     private let cellIdentifier = "MyTableViewCell"
