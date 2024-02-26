@@ -22,9 +22,23 @@ class MyTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupTableView()
+        getWeatherData()
         
-        navigationItem.title = "Location name"
+        navigationItem.title = "Погода в Минске"
         
+    }
+    
+    // MARK: - Get weather data
+    private func getWeatherData() {
+        networkService.fetchData { result in
+            switch result {
+            case .success(let data):
+                guard let data = try? JSONDecoder().decode(WeatherDataModel.self, from: data) else { return }
+                print("Data count: \(data.list.count)")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     // MARK: - TableView setting
