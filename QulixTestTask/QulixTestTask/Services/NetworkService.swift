@@ -7,26 +7,22 @@
 
 import Foundation
 
-class NetworkManager {
+class NetworkService {
     
-    enum APIError: Error {
-        case invalidURL
-        case requestFailed(Error)
-        case invalidResponse
-        case invalidData
-    }
-    
-    static var shared = NetworkManager()
-    
-    private let token = "d1a6d6149ff14de667a0686e8dd35d0e"
-    
+    static var shared = NetworkService()
+
+    // MARK: - Properties
     private let urlFirst = "https://api.openweathermap.org/data/2.5/forecast?units=metric&"
+    private let token = APIKeyManager.getAPIKey()
     
-    func fetchData(lat: Double,
-                   lon: Double,
-                   completion: @escaping (Result<Data,APIError>) -> Void) {
+    // Minsk coordinates
+    private let latitude = "53.9"
+    private let longitude = "27.6"
+    
+    // MARK: - Get weather data from API
+    func fetchData(completion: @escaping (Result<Data,APIError>) -> Void) {
         
-        let fullUrl = urlFirst + "lat=\(lat)&lon=\(lon)&appid=\(token)"
+        let fullUrl = urlFirst + "lat=\(latitude)&lon=\(longitude)&appid=\(token)"
         
         guard let url = URL(string: fullUrl) else {
             completion(.failure(.invalidURL))
@@ -58,6 +54,18 @@ class NetworkManager {
                 completion(.success(data))
 
             }.resume()
+    }
+    
+}
+
+// MARK: - Types of error
+extension NetworkService {
+    
+    enum APIError: Error {
+        case invalidURL
+        case requestFailed(Error)
+        case invalidResponse
+        case invalidData
     }
     
 }

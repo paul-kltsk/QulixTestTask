@@ -17,6 +17,8 @@
 		05F6667B2B8CB87100E0D838 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6667A2B8CB87100E0D838 /* MyTableViewController.swift */; };
 		05F6667D2B8CC01400E0D838 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */; };
 		05F666872B8CEE7A00E0D838 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F666862B8CEE7A00E0D838 /* NetworkService.swift */; };
+		05F666892B8CF1C000E0D838 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05F666882B8CF1C000E0D838 /* Secrets.plist */; };
+		05F6668B2B8CF25F00E0D838 /* APIKeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F6668A2B8CF25F00E0D838 /* APIKeyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		05F6667A2B8CB87100E0D838 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
 		05F6667C2B8CC01400E0D838 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		05F666862B8CEE7A00E0D838 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		05F666882B8CF1C000E0D838 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		05F6668A2B8CF25F00E0D838 /* APIKeyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 				05F6667F2B8CC57C00E0D838 /* ViewControllers */,
 				05F666532B8CB2B400E0D838 /* Assets.xcassets */,
 				05F666552B8CB2B400E0D838 /* LaunchScreen.storyboard */,
+				05F666882B8CF1C000E0D838 /* Secrets.plist */,
 				05F666582B8CB2B400E0D838 /* Info.plist */,
 			);
 			path = QulixTestTask;
@@ -166,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				05F666862B8CEE7A00E0D838 /* NetworkService.swift */,
+				05F6668A2B8CF25F00E0D838 /* APIKeyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F666572B8CB2B400E0D838 /* LaunchScreen.storyboard in Resources */,
+				05F666892B8CF1C000E0D838 /* Secrets.plist in Resources */,
 				05F666542B8CB2B400E0D838 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +311,7 @@
 				05F6664B2B8CB2AE00E0D838 /* AppDelegate.swift in Sources */,
 				05F6667D2B8CC01400E0D838 /* MyTableViewCell.swift in Sources */,
 				05F6664D2B8CB2AE00E0D838 /* SceneDelegate.swift in Sources */,
+				05F6668B2B8CF25F00E0D838 /* APIKeyService.swift in Sources */,
 				05F6667B2B8CB87100E0D838 /* MyTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
