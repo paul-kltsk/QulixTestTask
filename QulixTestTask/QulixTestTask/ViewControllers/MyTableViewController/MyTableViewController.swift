@@ -8,7 +8,7 @@
 import UIKit
 
 class MyTableViewController: UITableViewController {
-    
+
     private let networkService = NetworkService.shared
 
     // MARK: - Properties
@@ -20,6 +20,8 @@ class MyTableViewController: UITableViewController {
     private let city = MinskCity()
     
     private var weatherData: WeatherDataModel?
+
+    weak var delegate: DataDelegate?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -51,7 +53,7 @@ class MyTableViewController: UITableViewController {
     
     // MARK: - TableView setting
     private func setupTableView() {
-        tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
+        tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -68,6 +70,22 @@ class MyTableViewController: UITableViewController {
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension MyTableViewController {
+    
+    // did select row
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let rowsCount = rowsCount else { return }
+        
+        let detailViewController = DetailViewController()
+        let listIndex = getListIndexForIndexPath(indexPath: indexPath, rowsCount: rowsCount)
+        
+        guard let sendingData = weatherData?.list[listIndex] else { return }
+        
+        detailViewController.delegate = self.delegate
+        detailViewController.sendData(data: sendingData)
+        
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
     
     // number of section
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -104,3 +122,26 @@ extension MyTableViewController {
     
 }
 
+// MARK: - Calculation methods
+private extension MyTableViewController {
+    //calculation List index for indexPath
+    func getListIndexForIndexPath(indexPath: IndexPath, rowsCount: [Int]) -> Int {
+        
+        var index: Int = 0
+        
+        let section = indexPath.section
+        let row = indexPath.row
+        
+        if section == 0 {
+            index = row
+        } else {
+            for i in rowsCount[0...section-1] {
+                index += i
+            }
+            index += row
+        }
+    
+        return index
+    }
+    
+}
