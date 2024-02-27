@@ -51,7 +51,7 @@ class MyTableViewController: UITableViewController {
     
     // MARK: - TableView setting
     private func setupTableView() {
-        tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
+        tableView = UITableView(frame: CGRect.zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
@@ -68,6 +68,12 @@ class MyTableViewController: UITableViewController {
 
 // MARK: - UITableViewDelegate & UITableViewDataSource
 extension MyTableViewController {
+    
+    // did select row
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController()
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
     
     // number of section
     override func numberOfSections(in tableView: UITableView) -> Int {
