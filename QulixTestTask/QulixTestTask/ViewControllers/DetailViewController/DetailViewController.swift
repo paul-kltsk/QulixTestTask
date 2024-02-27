@@ -5,9 +5,18 @@
 //  Created by Pavel Kylitsky on 27/02/2024.
 //
 
+protocol DataDelegate: AnyObject {
+    func sendData(data: List)
+}
+
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    // MARK: - Properties
+    private var data: List?
+    
+    weak var delegate: DataDelegate?
     
     // MARK: - Views
     private let dateLabel = UILabel()
@@ -28,6 +37,16 @@ class DetailViewController: UIViewController {
     
     private func updateViews() {
         
+    }
+    
+}
+
+// MARK: - Delegate for sending data 
+extension DetailViewController: DataDelegate {
+    
+    func sendData(data: List) {
+        print("Okey: \(data.dtTxt)")
+        self.data = data
     }
     
 }
