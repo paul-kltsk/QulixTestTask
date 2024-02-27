@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
         setupViews()
         
     }
+
     
     private func updateViews() {
         
@@ -45,7 +46,6 @@ class DetailViewController: UIViewController {
 extension DetailViewController: DataDelegate {
     
     func sendData(data: List) {
-        print("Okey: \(data.dtTxt)")
         self.data = data
     }
     
