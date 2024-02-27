@@ -17,6 +17,7 @@ class MyTableViewController: UITableViewController {
     private var sectionTitles: [String]?
     private var sectionCount: Int?
     private var rowsCount: [Int]?
+    private let city = MinskCity()
     
     private var weatherData: WeatherDataModel?
     
@@ -27,13 +28,13 @@ class MyTableViewController: UITableViewController {
         setupTableView()
         getWeatherData()
         
-        navigationItem.title = "Погода в Минске" // bad practice
+        navigationItem.title = city.cityName
         
     }
     
     // MARK: - Get weather data
     private func getWeatherData() {
-        networkService.fetchData { result in
+        networkService.fetchData(latitude: city.latitude, longitude: city.longitude) { result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {

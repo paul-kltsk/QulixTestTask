@@ -15,12 +15,8 @@ class NetworkService {
     private let urlFirst = "https://api.openweathermap.org/data/2.5/forecast?units=metric&"
     private let token = APIKeyManager.getAPIKey()
     
-    // Minsk coordinates
-    private let latitude = "53.9"
-    private let longitude = "27.6"
-    
     // MARK: - Get weather data from API
-    func fetchData(completion: @escaping (Result<Data,APIError>) -> Void) {
+    func fetchData(latitude: String, longitude: String, completion: @escaping (Result<Data,APIError>) -> Void) {
         
         let fullUrl = urlFirst + "lat=\(latitude)&lon=\(longitude)&appid=\(token)"
         
