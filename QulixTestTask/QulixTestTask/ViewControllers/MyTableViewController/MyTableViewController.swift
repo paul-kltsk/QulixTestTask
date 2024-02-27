@@ -84,6 +84,7 @@ extension MyTableViewController {
         detailViewController.sendData(data: sendingData)
         
         navigationController?.pushViewController(detailViewController, animated: true)
+        
     }
     
     // number of section

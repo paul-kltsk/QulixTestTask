@@ -33,11 +33,20 @@ class DetailViewController: UIViewController {
         
         setupViews()
         
+        fillViewsWithData()
+        
     }
 
-    
-    private func updateViews() {
+    // MARK: - fill labels with data
+    private func fillViewsWithData() {
         
+        guard let data = data else { return }
+        
+        dateLabel.text = String(data.dtTxt.prefix(16))
+        temperatureLabel.text = String.convertToCelsiusString(value: data.main.temp)
+        humidityLabel.text = "Humidity: \(data.main.humidity)"
+        descriptionLabel.text = data.weather[0].description
+        iconImageView.image = UIImage(named: data.weather[0].icon.rawValue)
     }
     
 }
@@ -70,7 +79,6 @@ private extension DetailViewController {
         dateLabel.numberOfLines = 1
         dateLabel.adjustsFontSizeToFitWidth = true
         dateLabel.font = UIFont.systemFont(ofSize: 25, weight: .regular)
-        dateLabel.text = "2024-22-01 18:00"
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -85,7 +93,6 @@ private extension DetailViewController {
     func setupIconImageView() {
         view.addSubview(iconImageView)
         iconImageView.contentMode = .scaleAspectFit
-        iconImageView.image = UIImage(systemName: "sun.max.fill")
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -104,7 +111,6 @@ private extension DetailViewController {
         temperatureLabel.numberOfLines = 1
         temperatureLabel.adjustsFontSizeToFitWidth = true
         temperatureLabel.font = UIFont.systemFont(ofSize: 50, weight: .semibold)
-        temperatureLabel.text = "5°"
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -123,7 +129,6 @@ private extension DetailViewController {
         humidityLabel.numberOfLines = 1
         humidityLabel.adjustsFontSizeToFitWidth = true
         humidityLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
-        humidityLabel.text = "Humidity: 43"
         humidityLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -142,7 +147,6 @@ private extension DetailViewController {
         descriptionLabel.numberOfLines = 1
         descriptionLabel.adjustsFontSizeToFitWidth = true
         descriptionLabel.font = UIFont.systemFont(ofSize: 20, weight: .light)
-        descriptionLabel.text = "So hot today"
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

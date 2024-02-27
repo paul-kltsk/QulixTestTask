@@ -32,4 +32,12 @@ extension String {
         return sortedDates
     }
     
+    // in MyTableViewCell/fillCellWithData() & in  DetailViewController/fillViewsWithData()
+    static func convertToCelsiusString(value: Double) -> String {
+        let components = String(value).components(separatedBy: ".")
+        if let integerPart = components.first {
+            return integerPart + "°C"
+        } else { return "" }
+    }
+    
 }
