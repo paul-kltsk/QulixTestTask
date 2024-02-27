@@ -13,7 +13,7 @@ class NetworkService {
 
     // MARK: - Properties
     private let urlFirst = "https://api.openweathermap.org/data/2.5/forecast?units=metric&"
-    private let token = APIKeyManager.getAPIKey()
+    private let token = APIKeyService.getAPIKey()
     
     // MARK: - Get weather data from API
     func fetchData(latitude: String, longitude: String, completion: @escaping (Result<Data,APIError>) -> Void) {

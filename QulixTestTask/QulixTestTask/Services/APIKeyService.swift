@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct APIKeyManager {
+struct APIKeyService {
     
     // MARK: - Get API key
     static func getAPIKey() -> String {
