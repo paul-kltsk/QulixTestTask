@@ -40,7 +40,7 @@ class MyTableViewCell: UITableViewCell {
         timeLabel.text = "Time: " + hoursString
         
         let temperature = data.main.temp
-        let temperatureString = convertToCelsiusString(value: temperature)
+        let temperatureString = String.convertToCelsiusString(value: temperature)
         temperatureLabel.text = "Temperature: " + temperatureString
     }
     
@@ -104,12 +104,4 @@ private extension MyTableViewCell {
         return String(timeString)
     }
     
-    // in fillCellWithData()
-    func convertToCelsiusString(value: Double) -> String {
-        let components = String(value).components(separatedBy: ".")
-        if let integerPart = components.first {
-            return integerPart + "°C"
-        } else { return "" }
-    }
-
 }
