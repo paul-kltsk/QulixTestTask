@@ -16,7 +16,7 @@ class MyTableViewController: UITableViewController {
     private let rowHeight = UIScreen.main.bounds.height / 15
     private var sectionTitles: [String]?
     private var sectionCount: Int?
-    private var rowsCount: [Int]?
+    private var rowsCount: [Int]? // index - section number, value - rows count in this section
     private let city = MinskCity()
     
     private var weatherData: WeatherDataModel?
