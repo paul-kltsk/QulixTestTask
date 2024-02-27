@@ -33,15 +33,13 @@ class MyTableViewCell: UITableViewCell {
     }
 
     // MARK: - Fill cell with data
-    func fillCellWithData(data: WeatherDataModel, indexPath: IndexPath, rowCount: [Int]) {
-        
-        let index = getIndex(indexPath: indexPath, rowsCount: rowCount)
+    func fillCellWithData(data: List) {
 
-        let dateString = data.list[index].dtTxt
+        let dateString = data.dtTxt
         let hoursString = getHoursFromDate(date: dateString)
         timeLabel.text = "Time: " + hoursString
         
-        let temperature = data.list[index].main.temp
+        let temperature = data.main.temp
         let temperatureString = convertToCelsiusString(value: temperature)
         temperatureLabel.text = "Temperature: " + temperatureString
     }
@@ -113,26 +111,5 @@ private extension MyTableViewCell {
             return integerPart + "°C"
         } else { return "" }
     }
-    
-    // Calculation weatherData index for cell in fillCellWithData()
-    func getIndex(indexPath: IndexPath, rowsCount: [Int]) -> Int {
-        
-        var index: Int = 0
-        
-        let section = indexPath.section
-        let row = indexPath.row
-        
-        if section == 0 {
-            index = row
-        } else {
-            for i in rowsCount[0...section-1] {
-                index += i
-            }
-            index += row
-        }
-    
-        return index
-        
-    }
-    
+
 }

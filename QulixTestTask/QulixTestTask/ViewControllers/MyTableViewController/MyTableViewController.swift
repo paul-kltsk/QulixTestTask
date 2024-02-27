@@ -74,10 +74,9 @@ extension MyTableViewController {
     // did select row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let rowsCount = rowsCount else { return }
-        
         let detailViewController = DetailViewController()
-        let listIndex = getListIndexForIndexPath(indexPath: indexPath, rowsCount: rowsCount)
+        
+        let listIndex = getListIndexForIndexPath(indexPath: indexPath)
         
         guard let sendingData = weatherData?.list[listIndex] else { return }
         
@@ -102,9 +101,12 @@ extension MyTableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MyTableViewCell else { return UITableViewCell() }
         
-        guard let weatherData = weatherData, let rowsCount = rowsCount else { return UITableViewCell() }
+        guard let weatherData = weatherData else { return UITableViewCell() }
         
-        cell.fillCellWithData(data: weatherData, indexPath: indexPath, rowCount: rowsCount)
+        let listIndex = getListIndexForIndexPath(indexPath: indexPath)
+        let sendingData = weatherData.list[listIndex]
+        
+        cell.fillCellWithData(data: sendingData)
 
         return cell
         
@@ -125,7 +127,9 @@ extension MyTableViewController {
 // MARK: - Calculation methods
 private extension MyTableViewController {
     //calculation List index for indexPath
-    func getListIndexForIndexPath(indexPath: IndexPath, rowsCount: [Int]) -> Int {
+    func getListIndexForIndexPath(indexPath: IndexPath) -> Int {
+        
+        guard let rowsCount = rowsCount else { return 0 }
         
         var index: Int = 0
         
